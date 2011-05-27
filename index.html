@@ -1,0 +1,74 @@
+<html>
+<head>
+   <title>Turn On</title>
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+
+   <style type="text/css">
+      body { margin: 0; padding: 0; text-align: center; }
+      #wrapper { margin: 100px auto; }
+      #letters span { font-size: 40px; font-family: helvetica; }
+      .turnedon { color: red; }
+      #query { font-size: 30px; width: 600px; margin-top: 50px; }
+   </style>
+</head>
+<body>
+   <div id="wrapper">
+      <div id="letters">
+         <span id="letter-a">A</span>
+         <span id="letter-b">B</span>
+         <span id="letter-c">C</span>
+         <span id="letter-d">D</span>
+         <span id="letter-e">E</span>
+         <span id="letter-f">F</span>
+         <span id="letter-g">G</span>
+         <span id="letter-h">H</span>
+         <span id="letter-i">I</span>
+         <span id="letter-j">J</span>
+         <span id="letter-k">K</span>
+         <span id="letter-l">L</span>
+         <span id="letter-m">M</span>
+         <span id="letter-n">N</span>
+         <span id="letter-o">O</span>
+         <span id="letter-p">P</span>
+         <span id="letter-q">Q</span>
+         <span id="letter-r">R</span>
+         <span id="letter-s">S</span>
+         <span id="letter-t">T</span>
+         <span id="letter-u">U</span>
+         <span id="letter-v">V</span>
+         <span id="letter-w">W</span>
+         <span id="letter-x">X</span>
+         <span id="letter-y">Y</span>
+         <span id="letter-z">Z</span>
+      </div>
+      <div id="typer">
+         <input type="text" id="query" />
+      </div>
+   </div>
+
+
+   <script type="text/javascript">
+      jQuery(document).ready(function($) {
+         var reset = function(str) {
+            $('#letters span').removeClass('turnedon');
+            str = str.toUpperCase();
+            for (var i = 0; i < str.length; i++) {
+               var code = str.charCodeAt(i);
+               if (code >= 65 && code <= 90) {
+                  $('#letter-' + str[i].toLowerCase()).addClass('turnedon');
+               }
+            }
+         }
+         $('#query').keyup(function(e) {
+            if (e.keyCode == 8) {
+               reset($(this).val());
+            }
+            else if (e.keyCode >= 65 && e.keyCode <= 90) {
+               var char = String.fromCharCode(e.keyCode).toLowerCase();
+               $('#letter-' + char).addClass('turnedon');
+            }
+         });
+      });
+   </script>
+</body>
+</html>
